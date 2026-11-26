@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}University Ride{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'contas/auth.css' %}">
+</head>
+<body>
+    <div class="auth-layout">
+        <aside class="intro">
+            <a class="brand" href="{% url 'inicio' %}" aria-label="University Ride, início">
+                <span class="brand-mark">UR</span>
+                <span>university<span class="brand-accent">ride</span></span>
+            </a>
+
+            <div class="intro-content">
+                <span class="eyebrow">CARONAS UNIVERSITÁRIAS</span>
+                <h1>Seu caminho fica melhor em companhia.</h1>
+                <p>Encontre pessoas que fazem o mesmo trajeto e compartilhe experiências desde o primeiro quilômetro.</p>
+                <div class="route-visual" aria-hidden="true">
+                    <span class="route-point start"></span>
+                    <span class="route-path"></span>
+                    <span class="route-point finish"></span>
+                    <span class="route-tag tag-start">Partida</span>
+                    <span class="route-tag tag-finish">Campus</span>
+                </div>
+            </div>
+
+            <p class="intro-footer">Conectando estudantes, um trajeto de cada vez.</p>
+        </aside>
+
+        <main class="form-side">
+            <div class="form-shell">
+                <a class="mobile-brand" href="{% url 'inicio' %}">university<span>ride</span></a>
+                {% block form_content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+</body>
+</html>

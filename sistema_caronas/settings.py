@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'busca_match',
     'pagamento',
+    'contas',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,8 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+# Rotas de autenticação do University Ride.
+LOGIN_URL = "/entrar/"
+LOGIN_REDIRECT_URL = "/busca/"
+LOGOUT_REDIRECT_URL = "/entrar/"

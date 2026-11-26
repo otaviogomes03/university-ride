@@ -21,9 +21,32 @@
         .modal-actions .btn { flex: 1; margin: 0; }
         .btn-cancel { background-color: #dc3545; }
         .btn-cancel:hover { background-color: #c82333; }
+        .topbar { max-width: 600px; margin: 0 auto 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 14px; }
+        .topbar-title { color: #0056b3; font-weight: 800; text-decoration: none; }
+        .topbar-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .topbar-actions a { color: #0056b3; font-weight: 600; }
+        .topbar-actions form { margin: 0; }
+        .logout-button { border: 0; background: #e8eef7; color: #004494; border-radius: 6px; padding: 8px 12px; cursor: pointer; font: inherit; }
+        .logout-button:hover { background: #d9e5f2; }
+        @media (max-width: 440px) { .topbar { align-items: flex-start; flex-direction: column; } }
     </style>
 </head>
 <body>
+<header class="topbar">
+    <a class="topbar-title" href="{% url 'busca_carona' %}">University Ride</a>
+    <nav class="topbar-actions" aria-label="Conta">
+        {% if request.user.is_authenticated %}
+            <span>Olá, {{ request.user.first_name|default:request.user.username }}</span>
+            <form method="post" action="{% url 'sair' %}">
+                {% csrf_token %}
+                <button type="submit" class="logout-button">Sair</button>
+            </form>
+        {% else %}
+            <a href="{% url 'entrar' %}">Entrar</a>
+            <a href="{% url 'cadastro' %}">Criar conta</a>
+        {% endif %}
+    </nav>
+</header>
 
 <div class="container">
     <h2>Encontrar carona</h2>
